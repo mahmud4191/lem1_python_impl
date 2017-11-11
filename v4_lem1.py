@@ -48,14 +48,14 @@ def main():
 	    if(".." in every_case[index]):	
 	      #print "found ranged data"	
 	      split_data = every_case[index].split("..")	
-	      range_mid =  (float(split_data[0]) + float(split_data[1]))/2
-	      #print range_mid
-	      every_case[index] = range_mid	
+	      #range_mid =  (float(split_data[0]) + float(split_data[1]))/2
+	      #print split_data
+	      every_case[index] = [float(split_data[0]), float(split_data[1])]	
 	    else:	
 	      every_case[index] = float(every_case[index])
 	
 	#print "Got the attributes in floats as a list of lists"
-	#print atts
+	print atts
 
 	s = atts[0]
 	d1 = s[0]
@@ -82,15 +82,46 @@ def main():
 	#print "======================="	
 	#print Cols
 
+	#Converting all attribute columns into float
 	for every_list in Cols[:-1]:
 	  for k in range(0, n_cases):
-	    every_list[k] = float(every_list[k])
+	    if(".." in every_list[k]):
+	      #print every_list[k]	
+	      split_col_data = every_list[k].split("..")	
+	      every_list[k] = [float(split_col_data[0]), float(split_col_data[1])]
+	    else:    
+	      every_list[k] = float(every_list[k])
 
-	print "Got the columns in floats as a list of lists"
+	print "Got the attribute columns in floats as a list of lists"
 	print Cols
 
 	print "Got the decision column"
 	decisions = Cols[-1:]
 	print decisions
-		   
+		  
+	#Constructing the conceptual variable sets
+	list_of_concepts = []
+	for d in decisions:
+	  for dd in d:
+	    if(dd not in list_of_concepts):
+		list_of_concepts.append(dd)
+
+	print "Got list of concepts:"
+	print list_of_concepts	
+
+	conceptual_vars = []
+	for every_concept in list_of_concepts:
+	  conceptual_vars.append([])
+	  
+	for cid, every_concept in enumerate(list_of_concepts):
+	  #print every_concept
+	  for every_d in decisions:
+	    for ind, d in enumerate(every_d):
+	      print ind, d, every_concept
+	      if(d == every_concept):
+		print "matched:",ind, "cid:",cid	
+		conceptual_vars[cid].append(ind)
+	
+	print "Got the concpetual variablse is a list of lists:"
+	print conceptual_vars
 main()
