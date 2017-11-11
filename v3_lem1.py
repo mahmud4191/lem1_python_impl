@@ -19,7 +19,9 @@ def main():
 	
 	n_cases = len(cases)
 	n_cols = len(cases[0])
+	print "Got number of rows and columns"
 	print("Rows:",n_cases, "Columns:",n_cols)
+	print "Got the headings"
 	print headings
 
 	atts = []
@@ -37,11 +39,13 @@ def main():
 	  for index, d in enumerate(every_case):
 	    every_case[index] = float(every_case[index])
 	
-	s = atts[0]
-	d1 = s[0]
-	d2 = s[1]
-	print(d1+d2)
-	print atts	
+	#s = atts[0]
+	#d1 = s[0]
+	#d2 = s[1]
+	#print(d1+d2)
+
+	print "Got the attributes in floats as a list of lists"
+	print atts
 
 	i.close()
 
@@ -66,5 +70,8 @@ def main():
 	for every_list in Cols[:-1]:
 	  for k in range(0, n_cases):
 	    every_list[k] = float(every_list[k])
+
+	print "Got the columns in floats as a list of lists"
+	print Cols
 		   
 main()
