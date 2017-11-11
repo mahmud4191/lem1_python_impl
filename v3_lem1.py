@@ -1,7 +1,11 @@
+import sys
+
+filename =  sys.argv[1]
+
 def main():
 	cases=[]
 
-	i = open("test.txt",'r')
+	i = open(filename,'r')
 
 	for line in i:
 	  line = line.strip()	
@@ -14,7 +18,7 @@ def main():
 	    line = line.strip(' ')
             headings = line.split(' ')	    
 	  else:	
-	    x = line.split(' ')
+	    x = line.split()
 	    cases.append(x)
 	
 	n_cases = len(cases)
@@ -49,7 +53,7 @@ def main():
 
 	i.close()
 
-	f = open("test.txt",'r')
+	f = open(filename,'r')
 
 	Cols = []
 	for r in range(n_cols):
@@ -61,7 +65,7 @@ def main():
 	    print "============="
 	  else:
 	    for index in range(n_cols):
-	      Cols[index].append(line.split(' ')[index])	
+	      Cols[index].append(line.split()[index])	
 
 	#print cases
 	#print "======================="	
@@ -73,5 +77,9 @@ def main():
 
 	print "Got the columns in floats as a list of lists"
 	print Cols
+
+	print "Got the decision column"
+	decisions = Cols[-1:]
+	print decisions
 		   
 main()
