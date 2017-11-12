@@ -46,15 +46,12 @@ def main():
 	for every_case in atts:
 	  for index, d in enumerate(every_case):
 	    if(".." in every_case[index]):	
-	      #print "found ranged data"	
 	      split_data = every_case[index].split("..")	
-	      #range_mid =  (float(split_data[0]) + float(split_data[1]))/2
-	      #print split_data
 	      every_case[index] = [float(split_data[0]), float(split_data[1])]	
 	    else:	
 	      every_case[index] = float(every_case[index])
 	
-	#print "Got the attributes in floats as a list of lists"
+	print "Got the attributes in floats as a list of lists"
 	print atts
 
 	s = atts[0]
@@ -86,7 +83,6 @@ def main():
 	for every_list in Cols[:-1]:
 	  for k in range(0, n_cases):
 	    if(".." in every_list[k]):
-	      #print every_list[k]	
 	      split_col_data = every_list[k].split("..")	
 	      every_list[k] = [float(split_col_data[0]), float(split_col_data[1])]
 	    else:    
@@ -114,14 +110,25 @@ def main():
 	  conceptual_vars.append([])
 	  
 	for cid, every_concept in enumerate(list_of_concepts):
-	  #print every_concept
 	  for every_d in decisions:
 	    for ind, d in enumerate(every_d):
-	      print ind, d, every_concept
+	      #print ind, d, every_concept
 	      if(d == every_concept):
-		print "matched:",ind, "cid:",cid	
-		conceptual_vars[cid].append(ind)
+		#print "matched:",ind, "cid:",cid	
+		conceptual_vars[cid].append(ind+1)
 	
-	print "Got the concpetual variablse is a list of lists:"
+	print "Got the conceptual variables as a list of lists:"
 	print conceptual_vars
+
+	#conceptual_vars[0] = 
+	print conceptual_vars[0].append(2)
+
+	#Got to work on each conceptual var to create full sets
+	#for r in range(0,len(conceptual_vars)):
+	  #print r
+	  #for d in range(1,n_cases+1):
+	    #conceptual_vars[r]
+	    	
+
+
 main()
