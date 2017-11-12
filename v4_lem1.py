@@ -121,7 +121,25 @@ def main():
 	print conceptual_vars
 
 	#conceptual_vars[0] = 
-	print conceptual_vars[0].append(2)
+	#conceptual_vars[0].append(2)
+	#print conceptual_vars[0]
+
+	cutpoints = [[]]
+	for idx, col in enumerate(Cols[:-1]):
+	  for d in range(0,n_cases-1):
+	    interval = col[d+1] - col[d]	  
+	    #print interval
+	    if(interval != 0):
+	      cutpoint = (col[d+1] + col[d])/2	
+	      #print cutpoint, idx	
+	      cutpoints[idx].append(cutpoint)
+	      cutpoints.append([])
+
+	print cutpoints
+
+	cutpoints = [x for x in cutpoints if x != []]
+
+	print cutpoints
 
 	#Got to work on each conceptual var to create full sets
 	#for r in range(0,len(conceptual_vars)):
